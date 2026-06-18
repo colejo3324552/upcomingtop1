@@ -6,13 +6,12 @@
     <title>Hardest Upcoming Top 1's</title>
     <style>
         :root {
-            --bg: #030206;
-            --panel: #0a0813;
-            --border: rgba(138, 92, 246, 0.15);
-            --border-hover: rgba(138, 92, 246, 0.4);
+            --bg: #060608;
+            --panel: #0d0d12;
+            --border: rgba(255, 255, 255, 0.05);
             --text: #f3f4f6;
-            --text-sub: #9ca3af;
-            --purple-name: #581c87;
+            --text-sub: #8e939e;
+            --accent: #ef4444;
         }
         body {
             background: var(--bg);
@@ -24,33 +23,13 @@
             justify-content: center;
         }
         .container {
-            max-width: 1000px;
+            max-width: 900px;
             width: 100%;
             display: grid;
             grid-template-columns: 1.2fr 1fr;
             gap: 30px;
         }
         h1 { grid-column: 1 / -1; margin: 0 0 10px 0; font-size: 32px; font-weight: 800; letter-spacing: -0.03em; }
-        
-        /* Stats Header Row to fill space */
-        .stats-bar {
-            grid-column: 1 / -1;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-bottom: 10px;
-        }
-        .stat-box {
-            background: var(--panel);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 12px;
-            text-align: center;
-            font-size: 14px;
-        }
-        .stat-box span { color: var(--text-sub); display: block; font-size: 11px; text-transform: uppercase; margin-bottom: 2px; }
-        .stat-box strong { font-size: 18px; color: #fff; }
-
         .card {
             background: var(--panel);
             border: 1px solid var(--border);
@@ -62,13 +41,12 @@
             cursor: pointer;
             transition: all 0.2s ease;
         }
-        .card:hover { border-color: var(--border-hover); background: #100d1f; }
-        .num { font-size: 36px; font-weight: 900; color: #ffffff; font-style: italic; line-height: 1; }
+        .card:hover { border-color: rgba(255,255,255,0.15); background: #121218; }
+        .num { font-size: 36px; font-weight: 900; color: var(--accent); font-style: italic; line-height: 1; }
         .details { flex: 1; }
-        .name { font-size: 22px; font-weight: 700; color: var(--purple-name); margin: 0 0 4px 0; letter-spacing: -0.01em; }
+        .name { font-size: 22px; font-weight: 700; margin: 0 0 4px 0; letter-spacing: -0.01em; }
         .meta { color: var(--text-sub); font-size: 14px; }
         .meta strong { color: var(--text); }
-        
         .panel {
             background: var(--panel);
             border: 1px solid var(--border);
@@ -79,36 +57,16 @@
         }
         .thumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px; margin: 16px 0; background: #000; }
         .desc { font-size: 14px; line-height: 1.6; color: #cbd5e1; margin: 0 0 20px 0; }
-        
-        /* Specs grid inside panel */
-        .specs-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 20px;
-            font-size: 13px;
-        }
-        .spec-item { background: rgba(255,255,255,0.02); padding: 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.03); }
-        .spec-item span { color: var(--text-sub); display: block; font-size: 11px; }
-
         .btn {
-            display: block; width: 100%; padding: 12px; background: #5b21b6; color: white;
+            display: block; width: 100%; padding: 12px; background: var(--accent); color: white;
             border: none; border-radius: 8px; font-weight: 700; text-align: center; text-decoration: none; box-sizing: border-box; font-size: 14px;
-            transition: background 0.2s;
         }
-        .btn:hover { background: #6d28d9; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h1>Hardest Upcoming Top 1's</h1>
-    
-    <div class="stats-bar">
-        <div class="stat-box"><span>Tracked Projects</span><strong>1</strong></div>
-        <div class="stat-box"><span>Top Contender</span><strong>Aeternus</strong></div>
-        <div class="stat-box"><span>Database Status</span><strong>Verified Meta</strong></div>
-    </div>
     
     <div class="list-wrapper">
         <div class="card" onclick="toggleDetails()">
@@ -121,19 +79,10 @@
     </div>
 
     <div class="panel" id="panel">
-        <h2 style="margin:0 0 4px 0; font-size: 24px; font-weight: 800; color: var(--purple-name);">Aeternus</h2>
-        <div class="meta" style="margin-bottom: 15px;">Published by <strong>Riot</strong></div>
-        
-        <div class="specs-grid">
-            <div class="spec-item"><span>Verifier</span><strong>Diamond</strong></div>
-            <div class="spec-item"><span>Status</span><strong>In-Progress</strong></div>
-            <div class="spec-item"><span>Theme</span><strong>Hell / Unforgiving</strong></div>
-            <div class="spec-item"><span>Difficulty Class</span><strong>Top 1 Tier</strong></div>
-        </div>
-
-        <p class="desc">The ultimate unreleased hell-themed gauntlet designed to test the absolute boundaries of human precision. Serving as the direct spiritual successor to Bloodbath, it features tight, frame-perfect micro-timings and ruthless ship/wave corridors built to dominate the extreme meta.</p>
-        
+        <h2 style="margin:0 0 4px 0; font-size: 24px; font-weight: 800;">Aeternus</h2>
+        <div class="meta">Published by <strong>Riot</strong> • Verifier: <strong>Diamond</strong></div>
         <img class="thumb" src="https://i.ytimg.com/vi/3gU-Rrcm78M/hqdefault.jpg" alt="Aeternus Preview">
+        <p class="desc">The ultimate unreleased hell-themed gauntlet designed to test the absolute boundaries of human precision. Serving as the direct spiritual successor to Bloodbath, it features tight, frame-perfect micro-timings and ruthless ship/wave corridors built to dominate the extreme meta.</p>
         <a class="btn" href="https://www.youtube.com/watch?v=3gU-Rrcm78M" target="_blank">Watch Showcase</a>
     </div>
 </div>
