@@ -6,61 +6,111 @@
     <title>Hardest Upcoming Top 1's</title>
     <style>
         :root {
-            --bg: #060608;
-            --panel: #0d0d12;
-            --border: rgba(255, 255, 255, 0.05);
+            --bg: #030206;
+            --panel: #0a0813;
+            --border: rgba(138, 92, 246, 0.15);
+            --border-hover: rgba(138, 92, 246, 0.4);
             --text: #f3f4f6;
-            --text-sub: #8e939e;
-            --accent: #ef4444;
+            --text-sub: #9ca3af;
+            --accent-purple: #4c1d95;
         }
         body {
             background: var(--bg);
             color: var(--text);
             font-family: system-ui, -apple-system, sans-serif;
             margin: 0;
-            padding: 40px 20px;
+            padding: 30px;
+            min-height: 100vh;
+            box-sizing: border-box;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
         }
         .container {
-            max-width: 900px;
             width: 100%;
+            max-width: 100%;
             display: grid;
-            grid-template-columns: 1.2fr 1fr;
+            grid-template-columns: 1.4fr 1.1fr;
             gap: 30px;
+            flex: 1;
         }
-        h1 { grid-column: 1 / -1; margin: 0 0 10px 0; font-size: 32px; font-weight: 800; letter-spacing: -0.03em; }
+        h1 { 
+            grid-column: 1 / -1; 
+            margin: 0 0 15px 0; 
+            font-size: 38px; 
+            font-weight: 900; 
+            letter-spacing: -0.03em; 
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ffffff 40%, #5b21b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .list-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
         .card {
             background: var(--panel);
-            border: 1px solid var(--border);
+            border: 2px solid var(--border);
             border-radius: 12px;
-            padding: 20px;
+            padding: 30px;
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 35px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
-        .card:hover { border-color: rgba(255,255,255,0.15); background: #121218; }
-        .num { font-size: 36px; font-weight: 900; color: var(--accent); font-style: italic; line-height: 1; }
+        .card:hover { 
+            border-color: var(--border-hover); 
+            background: #100d1f;
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.15);
+        }
+        .num { 
+            font-size: 64px; 
+            font-weight: 900; 
+            color: #ffffff; 
+            font-style: italic; 
+            line-height: 1;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
         .details { flex: 1; }
-        .name { font-size: 22px; font-weight: 700; margin: 0 0 4px 0; letter-spacing: -0.01em; }
-        .meta { color: var(--text-sub); font-size: 14px; }
+        .name { 
+            font-size: 36px; 
+            font-weight: 900; 
+            color: #2e1065; 
+            margin: 0 0 6px 0; 
+            letter-spacing: -0.02em;
+            text-shadow: 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+        .meta { color: var(--text-sub); font-size: 16px; }
         .meta strong { color: var(--text); }
         .panel {
             background: var(--panel);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 24px;
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 35px;
             display: none;
             height: fit-content;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
         }
-        .thumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px; margin: 16px 0; background: #000; }
-        .desc { font-size: 14px; line-height: 1.6; color: #cbd5e1; margin: 0 0 20px 0; }
+        .thumb { 
+            width: 100%; 
+            aspect-ratio: 16/9; 
+            object-fit: cover; 
+            border-radius: 10px; 
+            margin: 20px 0; 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .desc { font-size: 16px; line-height: 1.7; color: #d1d5db; margin: 0 0 25px 0; }
         .btn {
-            display: block; width: 100%; padding: 12px; background: var(--accent); color: white;
-            border: none; border-radius: 8px; font-weight: 700; text-align: center; text-decoration: none; box-sizing: border-box; font-size: 14px;
+            display: block; width: 100%; padding: 16px; background: #5b21b6; color: white;
+            border: none; border-radius: 10px; font-weight: 800; text-align: center; 
+            text-decoration: none; box-sizing: border-box; font-size: 16px;
+            text-transform: uppercase; letter-spacing: 0.05em; transition: background 0.2s;
+            box-shadow: 0 4px 15px rgba(91, 33, 182, 0.3);
         }
+        .btn:hover { background: #6d28d9; }
     </style>
 </head>
 <body>
@@ -79,8 +129,8 @@
     </div>
 
     <div class="panel" id="panel">
-        <h2 style="margin:0 0 4px 0; font-size: 24px; font-weight: 800;">Aeternus</h2>
-        <div class="meta">Published by <strong>Riot</strong> • Verifier: <strong>Diamond</strong></div>
+        <h2 style="margin:0 0 6px 0; font-size: 32px; font-weight: 900; color: #4c1d95;">Aeternus</h2>
+        <div class="meta" style="font-size: 15px;">Published by <strong>Riot</strong> • Verifier: <strong>Diamond</strong></div>
         <img class="thumb" src="https://i.ytimg.com/vi/3gU-Rrcm78M/hqdefault.jpg" alt="Aeternus Preview">
         <p class="desc">The ultimate unreleased hell-themed gauntlet designed to test the absolute boundaries of human precision. Serving as the direct spiritual successor to Bloodbath, it features tight, frame-perfect micro-timings and ruthless ship/wave corridors built to dominate the extreme meta.</p>
         <a class="btn" href="https://www.youtube.com/watch?v=3gU-Rrcm78M" target="_blank">Watch Showcase</a>
