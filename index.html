@@ -30,7 +30,6 @@
         }
         h1 { grid-column: 1 / -1; margin: 0 0 10px 0; font-size: 32px; font-weight: 800; letter-spacing: -0.03em; }
         
-        /* Stats sub-header to fill space */
         .stats-grid {
             grid-column: 1 / -1;
             display: grid;
@@ -62,6 +61,7 @@
         }
         .card.ae-card:hover { border-color: #4c1d95; background: #110924; }
         .card.ang-card:hover { border-color: #ffb6c1; background: #24141a; }
+        .card.ex-card:hover { border-color: #70757a; background: #1a1a1f; }
         
         .num { font-size: 36px; font-weight: 900; color: #ffffff; font-style: italic; line-height: 1; }
         .details { flex: 1; }
@@ -78,7 +78,6 @@
             height: fit-content;
         }
         
-        /* Inner technical data matrix to fill panel space */
         .tech-matrix {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -104,8 +103,8 @@
     <h1>Hardest Upcoming Top 1's</h1>
     
     <div class="stats-grid">
-        <div class="stat-item"><span>Total Listed</span><strong>2 Projects</strong></div>
-        <div class="stat-item"><span>Primary Style</span><strong>Extreme</strong></div>
+        <div class="stat-item"><span>Total Listed</span><strong>3 Projects</strong></div>
+        <div class="stat-item"><span>Primary Style</span><span>Extreme</span></div>
         <div class="stat-item"><span>Database Status</span><strong>Live Tracking</strong></div>
         <div class="stat-item"><span>Last Update</span><strong>June 2026</strong></div>
     </div>
@@ -118,18 +117,18 @@
                 <div class="meta">Published by <strong>Riot</strong></div>
             </div>
         </div>
-        <div class="card" onclick="showLevel('unassigned')">
-            <div class="num">--</div>
-            <div class="details">
-                <div class="name" style="color: var(--text-sub);">Slot Reserved</div>
-                <div class="meta">Pending verification data</div>
-            </div>
-        </div>
         <div class="card ang-card" onclick="showLevel('angelicide')">
             <div class="num">2</div>
             <div class="details">
                 <div class="name">Angelicide</div>
                 <div class="meta">Created by <strong>LexyCat</strong></div>
+            </div>
+        </div>
+        <div class="card ex-card" onclick="showLevel('exasperation')">
+            <div class="num">3</div>
+            <div class="details">
+                <div class="name">Exasperation</div>
+                <div class="meta">Created by <strong>Tyry96</strong></div>
             </div>
         </div>
     </div>
@@ -153,12 +152,16 @@
 <script>
     const data = {
         aeternus: {
-            n: "Aeternus", m: "Published by <strong>Riot</strong>", status: "Unassigned / Open", theme: "Hell / Unforgiving", v: "3gU-Rrcm78M",
+            n: "Aeternus", m: "Published by <strong>Riot</strong>", type: "Mega-Collaboration", status: "Unassigned / Open", theme: "Hell / Unforgiving", v: "3gU-Rrcm78M",
             d: "The ultimate unreleased hell-themed gauntlet designed to test the absolute boundaries of human precision. Serving as the direct spiritual successor to Bloodbath, it features tight, frame-perfect micro-timings and ruthless ship/wave corridors built to dominate the extreme meta."
         },
         angelicide: {
-            n: "Angelicide", m: "Created by <strong>LexyCat</strong>", status: "In-Progress", theme: "Apocalyptic / Angelic", v: "x7mC8-0zYBc",
+            n: "Angelicide", m: "Created by <strong>LexyCat</strong>", type: "Mega-Collaboration", status: "In-Progress", theme: "Apocalyptic / Angelic", v: "x7mC8-0zYBc",
             d: "A stunningly dense apocalyptic and angelic themed mega-collaboration managed by LexyCat. It introduces complex rhythmic layouts, visually striking aesthetics, and heavy mechanical wave precision built to contest the top spots."
+        },
+        exasperation: {
+            n: "Exasperation", m: "Created by <strong>Tyry96</strong>", type: "Solo Project", status: "In-Progress", theme: "Monochrome / Technical", v: "hO_N-eJ9X-k",
+            d: "An infamous, historic test of structural endurance and near-impossible gameplay coordination. Known for its distinct visual style and sensory overload design, it features an exhaustive series of hyper-tight maneuvers and rhythmic click alignment sections."
         }
     };
 
@@ -167,6 +170,7 @@
         if (!l) return;
         document.getElementById('p-name').innerText = l.n;
         document.getElementById('p-meta').innerHTML = l.m;
+        document.getElementById('p-type').innerText = l.type;
         document.getElementById('p-status').innerText = l.status;
         document.getElementById('p-theme').innerText = l.theme;
         document.getElementById('p-desc').innerText = l.d;
