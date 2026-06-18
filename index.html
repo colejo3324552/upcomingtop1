@@ -11,7 +11,6 @@
             --border: rgba(255, 255, 255, 0.05);
             --text: #f3f4f6;
             --text-sub: #8e939e;
-            --accent: #ef4444;
         }
         body {
             background: var(--bg);
@@ -30,6 +29,25 @@
             gap: 30px;
         }
         h1 { grid-column: 1 / -1; margin: 0 0 10px 0; font-size: 32px; font-weight: 800; letter-spacing: -0.03em; }
+        
+        /* Stats sub-header to fill space */
+        .stats-grid {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 5px;
+        }
+        .stat-item {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 13px;
+        }
+        .stat-item span { color: var(--text-sub); display: block; font-size: 10px; text-transform: uppercase; margin-bottom: 2px; }
+        .stat-item strong { color: #fff; }
+
         .list-wrapper { display: flex; flex-direction: column; gap: 12px; }
         .card {
             background: var(--panel);
@@ -42,12 +60,15 @@
             cursor: pointer;
             transition: all 0.2s ease;
         }
-        .card:hover { border-color: rgba(255,255,255,0.15); background: #121218; }
+        .card.ae-card:hover { border-color: #4c1d95; background: #110924; }
+        .card.ang-card:hover { border-color: #ffb6c1; background: #24141a; }
+        
         .num { font-size: 36px; font-weight: 900; color: #ffffff; font-style: italic; line-height: 1; }
         .details { flex: 1; }
         .name { font-size: 22px; font-weight: 700; margin: 0 0 4px 0; letter-spacing: -0.01em; }
         .meta { color: var(--text-sub); font-size: 14px; }
         .meta strong { color: var(--text); }
+        
         .panel {
             background: var(--panel);
             border: 1px solid var(--border);
@@ -56,12 +77,25 @@
             display: none;
             height: fit-content;
         }
-        .thumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px; margin: 16px 0; background: #000; }
-        .desc { font-size: 14px; line-height: 1.6; color: #cbd5e1; margin: 0 0 20px 0; }
-        .btn {
-            display: block; width: 100%; padding: 12px; background: var(--accent); color: white;
-            border: none; border-radius: 8px; font-weight: 700; text-align: center; text-decoration: none; box-sizing: border-box; font-size: 14px;
+        
+        /* Inner technical data matrix to fill panel space */
+        .tech-matrix {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 14px 0;
+            font-size: 12px;
         }
+        .matrix-cell {
+            background: rgba(255,255,255,0.02);
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+        .matrix-cell span { color: var(--text-sub); display: block; font-size: 10px; text-transform: uppercase; }
+
+        .thumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px; margin-bottom: 16px; background: #000; }
+        .desc { font-size: 14px; line-height: 1.6; color: #cbd5e1; margin: 0; }
     </style>
 </head>
 <body>
@@ -69,18 +103,32 @@
 <div class="container">
     <h1>Hardest Upcoming Top 1's</h1>
     
+    <div class="stats-grid">
+        <div class="stat-item"><span>Total Listed</span><strong>2 Projects</strong></div>
+        <div class="stat-item"><span>Primary Style</span><strong>Extreme</strong></div>
+        <div class="stat-item"><span>Database Status</span><strong>Live Tracking</strong></div>
+        <div class="stat-item"><span>Last Update</span><strong>June 2026</strong></div>
+    </div>
+    
     <div class="list-wrapper">
-        <div class="card" onclick="showLevel('aeternus')">
+        <div class="card ae-card" onclick="showLevel('aeternus')">
             <div class="num">1</div>
             <div class="details">
-                <div class="name" style="color: #4c1d95;">Aeternus</div>
+                <div class="name">Aeternus</div>
                 <div class="meta">Published by <strong>Riot</strong></div>
             </div>
         </div>
-        <div class="card" onclick="showLevel('angelicide')">
+        <div class="card" onclick="showLevel('unassigned')">
+            <div class="num">--</div>
+            <div class="details">
+                <div class="name" style="color: var(--text-sub);">Slot Reserved</div>
+                <div class="meta">Pending verification data</div>
+            </div>
+        </div>
+        <div class="card ang-card" onclick="showLevel('angelicide')">
             <div class="num">2</div>
             <div class="details">
-                <div class="name" style="color: #ffb6c1;">Angelicide</div>
+                <div class="name">Angelicide</div>
                 <div class="meta">Created by <strong>LexyCat</strong></div>
             </div>
         </div>
@@ -88,34 +136,41 @@
 
     <div class="panel" id="panel">
         <h2 id="p-name" style="margin:0 0 4px 0; font-size: 24px; font-weight: 800;"></h2>
-        <div id="p-meta" class="meta" style="margin-bottom: 15px;"></div>
+        <div id="p-meta" class="meta"></div>
+        
+        <div class="tech-matrix">
+            <div class="matrix-cell"><span>Verification Status</span><strong id="p-status"></strong></div>
+            <div class="matrix-cell"><span>Build Type</span><strong id="p-type">Mega-Collaboration</strong></div>
+            <div class="matrix-cell"><span>Primary Theme</span><strong id="p-theme"></strong></div>
+            <div class="matrix-cell"><span>Physics Version</span><strong>2.206+ Elite Meta</strong></div>
+        </div>
+        
         <img id="p-thumb" class="thumb" src="" alt="Preview">
         <p id="p-desc" class="desc"></p>
-        <a id="p-btn" class="btn" href="" target="_blank">Watch Showcase</a>
     </div>
 </div>
 
 <script>
     const data = {
         aeternus: {
-            n: "Aeternus", color: "#4c1d95", m: "Published by <strong>Riot</strong> • Verifier: <strong>Diamond</strong>", btnBg: "#ef4444", v: "3gU-Rrcm78M",
+            n: "Aeternus", m: "Published by <strong>Riot</strong>", status: "Unassigned / Open", theme: "Hell / Unforgiving", v: "3gU-Rrcm78M",
             d: "The ultimate unreleased hell-themed gauntlet designed to test the absolute boundaries of human precision. Serving as the direct spiritual successor to Bloodbath, it features tight, frame-perfect micro-timings and ruthless ship/wave corridors built to dominate the extreme meta."
         },
         angelicide: {
-            n: "Angelicide", color: "#ffb6c1", m: "Created by <strong>LexyCat</strong>", btnBg: "#db2777", v: "x7mC8-0zYBc",
+            n: "Angelicide", m: "Created by <strong>LexyCat</strong>", status: "In-Progress", theme: "Apocalyptic / Angelic", v: "x7mC8-0zYBc",
             d: "A stunningly dense apocalyptic and angelic themed mega-collaboration managed by LexyCat. It introduces complex rhythmic layouts, visually striking aesthetics, and heavy mechanical wave precision built to contest the top spots."
         }
     };
 
     function showLevel(key) {
         const l = data[key];
+        if (!l) return;
         document.getElementById('p-name').innerText = l.n;
-        document.getElementById('p-name').style.color = l.color;
         document.getElementById('p-meta').innerHTML = l.m;
+        document.getElementById('p-status').innerText = l.status;
+        document.getElementById('p-theme').innerText = l.theme;
         document.getElementById('p-desc').innerText = l.d;
         document.getElementById('p-thumb').src = `https://i.ytimg.com/vi/${l.v}/hqdefault.jpg`;
-        document.getElementById('p-btn').href = `https://www.youtube.com/watch?v=${l.v}`;
-        document.getElementById('p-btn').style.background = l.btnBg;
         document.getElementById('panel').style.display = 'block';
     }
 </script>
