@@ -99,7 +99,8 @@
         }
         .matrix-cell span { color: var(--text-sub); display: block; font-size: 11px; font-weight: bold; text-transform: uppercase; }
 
-        .thumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 4px; margin-bottom: 20px; border: 1px solid var(--border); background: #000; }
+        .video-container { width: 100%; aspect-ratio: 16/9; margin-bottom: 20px; border: 1px solid var(--border); border-radius: 4px; background: #000; overflow: hidden; }
+        .video-container iframe { width: 100%; height: 100%; border: none; display: block; }
         .desc { font-size: 15px; line-height: 1.65; color: #1f2937; margin: 0; }
     </style>
 </head>
@@ -171,7 +172,9 @@
             <div class="matrix-cell"><span>Physics Version</span><strong>2.206+ Elite Meta</strong></div>
         </div>
         
-        <img id="p-thumb" class="thumb" src="" alt="Preview">
+        <div class="video-container">
+            <iframe id="p-video" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
         <p id="p-desc" class="desc"></p>
     </div>
 </div>
@@ -179,27 +182,27 @@
 <script>
     const data = {
         aeternus: {
-            n: "Aeternus", m: "Published by <strong>Riot</strong>", type: "Mega-Collaboration", status: "Unassigned / Open", theme: "Hell / Unforgiving", v: "3gU-Rrcm78M",
+            n: "Aeternus", m: "Published by <strong>Riot</strong>", type: "Mega-Collaboration", status: "Unassigned / Open", theme: "Hell / Unforgiving", v: "XjypbEY_2Aw",
             d: "The ultimate unreleased hell-themed gauntlet designed to test the absolute boundaries of human precision. Serving as the direct spiritual successor to Bloodbath, it features tight, frame-perfect micro-timings and ruthless ship/wave corridors built to dominate the extreme meta."
         },
         angelicide: {
-            n: "Angelicide", m: "Published by <strong>LexyCat</strong>", type: "Mega-Collaboration", status: "In-Progress", theme: "Apocalyptic / Angelic", v: "x7mC8-0zYBc",
+            n: "Angelicide", m: "Published by <strong>LexyCat</strong>", type: "Mega-Collaboration", status: "In-Progress", theme: "Apocalyptic / Angelic", v: "UvLvEh_xN5A",
             d: "A stunningly dense apocalyptic and angelic themed mega-collaboration managed by LexyCat. It introduces complex rhythmic layouts, visually striking aesthetics, and heavy mechanical wave precision built to contest the top spots."
         },
         exasperation: {
-            n: "Exasperation", m: "Published by <strong>Thycket</strong>", type: "Solo Project", status: "In-Progress", theme: "Monochrome / Technical", v: "hO_N-eJ9X-k",
+            n: "Exasperation", m: "Published by <strong>Thycket</strong>", type: "Solo Project", status: "In-Progress", theme: "Monochrome / Technical", v: "9-OZ_2p9p1I",
             d: "An infamous, historic test of structural endurance and near-impossible gameplay coordination. Known for its distinct visual style and sensory overload design, it features an exhaustive series of hyper-tight maneuvers and rhythmic click alignment sections."
         },
         kocmoc_unleashed: {
-            n: "KOCMOC UNLEASHED", m: "Published by <strong>CherryTeam</strong>", type: "Mega-Collaboration", status: "In-Progress", theme: "Cosmic / Pure White", v: "xT7w-9_1BGs",
+            n: "KOCMOC UNLEASHED", m: "Published by <strong>CherryTeam</strong>", type: "Mega-Collaboration", status: "In-Progress", theme: "Cosmic / Pure White", v: "H6v5U_yT2cU",
             d: "An escalated, heavily unnerfed continuation of the cosmic KOCMOC mythos, compiled by CherryTeam. Utilizing blinding white, monochromatic visual arrays combined with devastating straight-fly segments and lethal wave spaces."
         },
         grief: {
-            n: "GRIEF", m: "Published by <strong>Icedcave</strong>", type: "Mega-Collaboration", status: "In-Progress", theme: "Dark Crimson / Malevolent", v: "7X_u0qIisg8",
+            n: "GRIEF", m: "Published by <strong>Icedcave</strong>", type: "Mega-Collaboration", status: "In-Progress", theme: "Dark Crimson / Malevolent", v: "jYXxoDywnAE",
             d: "A brutal, highly anticipated conceptual remake and successor to Slaughterhouse, overseen by Icedcave. Marked by a grim, pitch-black and deep crimson design philosophy, it challenges top players with merciless precision fly elements and brutal wave choke points."
         },
         heliopolis: {
-            n: "Heliopolis", m: "Published by <strong>MindCap</strong>", type: "Mega-Collaboration", status: "In-Progress", theme: "Dark Swamp / Atmospheric", v: "9mQ5v_kM-bQ",
+            n: "Heliopolis", m: "Published by <strong>MindCap</strong>", type: "Mega-Collaboration", status: "In-Progress", theme: "Dark Swamp / Atmospheric", v: "7yaKGl_2Dsw",
             d: "A massive impending mega-collaboration hosted by MindCap. It features an atmospheric, dark swamp color palette paired with claustrophobic corridor navigation and demanding technical timing structures built to challenge the absolute limit of modern players."
         }
     };
@@ -213,7 +216,7 @@
         document.getElementById('p-status').innerText = l.status;
         document.getElementById('p-theme').innerText = l.theme;
         document.getElementById('p-desc').innerText = l.d;
-        document.getElementById('p-thumb').src = `https://i.ytimg.com/vi/${l.v}/hqdefault.jpg`;
+        document.getElementById('p-video').src = `https://www.youtube.com/embed/${l.v}`;
         document.getElementById('panel').style.display = 'block';
     }
 </script>
