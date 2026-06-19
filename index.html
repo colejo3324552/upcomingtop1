@@ -6,78 +6,82 @@
     <title>Hardest Upcoming Top 1's</title>
     <style>
         :root {
-            --bg: #060608;
-            --panel: #0d0d12;
-            --border: rgba(255, 255, 255, 0.05);
-            --text: #f3f4f6;
-            --text-sub: #8e939e;
+            --bg: #ffffff;
+            --panel: #ffffff;
+            --border: #e5e7eb;
+            --text: #000000;
+            --text-sub: #4b5563;
         }
         body {
             background: var(--bg);
             color: var(--text);
-            font-family: system-ui, -apple-system, sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 40px 20px;
             display: flex;
             justify-content: center;
         }
         .container {
-            max-width: 900px;
+            max-width: 950px;
             width: 100%;
             display: grid;
-            grid-template-columns: 1.2fr 1fr;
+            grid-template-columns: 1.3fr 1fr;
             gap: 30px;
         }
-        h1 { grid-column: 1 / -1; margin: 0 0 10px 0; font-size: 32px; font-weight: 800; letter-spacing: -0.03em; }
+        h1 { grid-column: 1 / -1; margin: 0 0 20px 0; font-size: 28px; font-weight: 700; text-align: center; border-bottom: 2px solid #000; padding-bottom: 10px; }
         
         .stats-grid {
             grid-column: 1 / -1;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 12px;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
         .stat-item {
             background: var(--panel);
             border: 1px solid var(--border);
-            border-radius: 8px;
+            border-radius: 4px;
             padding: 10px;
             font-size: 13px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
-        .stat-item span { color: var(--text-sub); display: block; font-size: 10px; text-transform: uppercase; margin-bottom: 2px; }
-        .stat-item strong { color: #fff; }
+        .stat-item span { color: var(--text-sub); display: block; font-size: 11px; font-weight: bold; text-transform: uppercase; margin-bottom: 2px; }
+        .stat-item strong { color: #000; }
 
-        .list-wrapper { display: flex; flex-direction: column; gap: 12px; }
+        .list-wrapper { display: flex; flex-direction: column; gap: 15px; }
         .card {
             background: var(--panel);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 4px;
             padding: 20px;
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: background 0.15s, border-color 0.15s;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
         }
-        .card.ae-card:hover { border-color: #4c1d95; background: #110924; }
-        .card.ang-card:hover { border-color: #ffb6c1; background: #24141a; }
-        .card.ex-card:hover { border-color: #70757a; background: #1a1a1f; }
-        .card.koc-card:hover { border-color: #ffffff; background: #222226; }
-        .card.hel-card:hover { border-color: #2d4a22; background: #0f170d; }
+        .card.ae-card:hover { border-color: #4c1d95; background: #f5f3ff; }
+        .card.ang-card:hover { border-color: #ffb6c1; background: #fff5f7; }
+        .card.ex-card:hover { border-color: #70757a; background: #f3f4f6; }
+        .card.koc-card:hover { border-color: #a3a3a3; background: #fafafa; }
+        .card.grf-card:hover { border-color: #991b1b; background: #fef2f2; }
+        .card.hel-card:hover { border-color: #2d4a22; background: #f0fdf4; }
         
-        .num { font-size: 36px; font-weight: 900; color: #ffffff; font-style: italic; line-height: 1; }
+        .num { font-size: 24px; font-weight: 700; color: #000; min-width: 50px; }
         .details { flex: 1; }
-        .name { font-size: 22px; font-weight: 700; margin: 0 0 4px 0; letter-spacing: -0.01em; }
+        .name { font-size: 22px; font-weight: 700; margin: 0 0 4px 0; }
         .meta { color: var(--text-sub); font-size: 14px; }
-        .meta strong { color: var(--text); }
+        .meta strong { color: #000; }
         
         .panel {
             background: var(--panel);
             border: 1px solid var(--border);
-            border-radius: 14px;
+            border-radius: 4px;
             padding: 24px;
             display: none;
             height: fit-content;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
         }
         
         .tech-matrix {
@@ -88,15 +92,15 @@
             font-size: 12px;
         }
         .matrix-cell {
-            background: rgba(255,255,255,0.02);
+            background: #f9fafb;
             padding: 8px;
-            border-radius: 6px;
-            border: 1px solid rgba(255,255,255,0.03);
+            border-radius: 4px;
+            border: 1px solid var(--border);
         }
-        .matrix-cell span { color: var(--text-sub); display: block; font-size: 10px; text-transform: uppercase; }
+        .matrix-cell span { color: var(--text-sub); display: block; font-size: 10px; font-weight: bold; text-transform: uppercase; }
 
-        .thumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px; margin-bottom: 16px; background: #000; }
-        .desc { font-size: 14px; line-height: 1.6; color: #cbd5e1; margin: 0; }
+        .thumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 4px; margin-bottom: 16px; border: 1px solid var(--border); background: #000; }
+        .desc { font-size: 14px; line-height: 1.6; color: #1f2937; margin: 0; }
     </style>
 </head>
 <body>
@@ -105,7 +109,7 @@
     <h1>Hardest Upcoming Top 1's</h1>
     
     <div class="stats-grid">
-        <div class="stat-item"><span>Total Listed</span><strong>5 Projects</strong></div>
+        <div class="stat-item"><span>Total Listed</span><strong>6 Projects</strong></div>
         <div class="stat-item"><span>Primary Style</span><span>Extreme</span></div>
         <div class="stat-item"><span>Database Status</span><strong>Live Tracking</strong></div>
         <div class="stat-item"><span>Last Update</span><strong>June 2026</strong></div>
@@ -113,35 +117,42 @@
     
     <div class="list-wrapper">
         <div class="card ae-card" onclick="showLevel('aeternus')">
-            <div class="num">1</div>
+            <div class="num">#1</div>
             <div class="details">
                 <div class="name">Aeternus</div>
                 <div class="meta">Published by <strong>Riot</strong></div>
             </div>
         </div>
         <div class="card ang-card" onclick="showLevel('angelicide')">
-            <div class="num">2</div>
+            <div class="num">#2</div>
             <div class="details">
                 <div class="name">Angelicide</div>
                 <div class="meta">Created by <strong>LexyCat</strong></div>
             </div>
         </div>
         <div class="card ex-card" onclick="showLevel('exasperation')">
-            <div class="num">3</div>
+            <div class="num">#3</div>
             <div class="details">
                 <div class="name">Exasperation</div>
                 <div class="meta">Created by <strong>Thycket</strong></div>
             </div>
         </div>
         <div class="card koc-card" onclick="showLevel('kocmoc_unleashed')">
-            <div class="num">4</div>
+            <div class="num">#4</div>
             <div class="details">
                 <div class="name">KOCMOC UNLEASHED</div>
                 <div class="meta">Created by <strong>CherryTeam</strong></div>
             </div>
         </div>
+        <div class="card grf-card" onclick="showLevel('grief')">
+            <div class="num">#5</div>
+            <div class="details">
+                <div class="name">Grief</div>
+                <div class="meta">Created by <strong>Icedcave</strong></div>
+            </div>
+        </div>
         <div class="card hel-card" onclick="showLevel('heliopolis')">
-            <div class="num">5</div>
+            <div class="num">#6</div>
             <div class="details">
                 <div class="name">Heliopolis</div>
                 <div class="meta">Created by <strong>MindCap</strong></div>
@@ -150,7 +161,7 @@
     </div>
 
     <div class="panel" id="panel">
-        <h2 id="p-name" style="margin:0 0 4px 0; font-size: 24px; font-weight: 800;"></h2>
+        <h2 id="p-name" style="margin:0 0 4px 0; font-size: 24px; font-weight: 700;"></h2>
         <div id="p-meta" class="meta"></div>
         
         <div class="tech-matrix">
@@ -182,6 +193,10 @@
         kocmoc_unleashed: {
             n: "KOCMOC UNLEASHED", m: "Created by <strong>CherryTeam</strong>", type: "Mega-Collaboration", status: "In-Progress", theme: "Cosmic / Pure White", v: "xT7w-9_1BGs",
             d: "An escalated, heavily unnerfed continuation of the cosmic KOCMOC mythos, compiled by CherryTeam. Utilizing blinding white, monochromatic visual arrays combined with devastating straight-fly segments and lethal wave spaces."
+        },
+        grief: {
+            n: "Grief", m: "Created by <strong>Icedcave</strong>", type: "Mega-Collaboration", status: "In-Progress", theme: "Dark Crimson / Malevolent", v: "7X_u0qIisg8",
+            d: "A brutal, highly anticipated conceptual remake and successor to Slaughterhouse, overseen by Icedcave. Marked by a grim, pitch-black and deep crimson design philosophy, it challenges top players with merciless precision fly elements and brutal wave choke points."
         },
         heliopolis: {
             n: "Heliopolis", m: "Created by <strong>MindCap</strong>", type: "Mega-Collaboration", status: "In-Progress", theme: "Dark Swamp / Atmospheric", v: "9mQ5v_kM-bQ",
