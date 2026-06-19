@@ -22,41 +22,41 @@
             justify-content: center;
         }
         .container {
-            max-width: 950px;
+            max-width: 1050px;
             width: 100%;
             display: grid;
-            grid-template-columns: 1.3fr 1fr;
-            gap: 30px;
+            grid-template-columns: 1.35fr 1fr;
+            gap: 35px;
         }
-        h1 { grid-column: 1 / -1; margin: 0 0 20px 0; font-size: 28px; font-weight: 700; text-align: center; border-bottom: 2px solid #000; padding-bottom: 10px; }
+        h1 { grid-column: 1 / -1; margin: 0 0 25px 0; font-size: 32px; font-weight: 700; text-align: center; border-bottom: 2px solid #000; padding-bottom: 12px; }
         
         .stats-grid {
             grid-column: 1 / -1;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 12px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         .stat-item {
             background: var(--panel);
             border: 1px solid var(--border);
             border-radius: 4px;
-            padding: 10px;
-            font-size: 13px;
+            padding: 12px;
+            font-size: 14px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
         .stat-item span { color: var(--text-sub); display: block; font-size: 11px; font-weight: bold; text-transform: uppercase; margin-bottom: 2px; }
         .stat-item strong { color: #000; }
 
-        .list-wrapper { display: flex; flex-direction: column; gap: 15px; }
+        .list-wrapper { display: flex; flex-direction: column; gap: 18px; }
         .card {
             background: var(--panel);
             border: 1px solid var(--border);
             border-radius: 4px;
-            padding: 20px;
+            padding: 24px;
             display: flex;
             align-items: center;
-            gap: 25px;
+            gap: 30px;
             cursor: pointer;
             transition: background 0.15s, border-color 0.15s;
             box-shadow: 0 1px 4px rgba(0,0,0,0.05);
@@ -68,17 +68,17 @@
         .card.grf-card:hover { border-color: #991b1b; background: #fef2f2; }
         .card.hel-card:hover { border-color: #2d4a22; background: #f0fdf4; }
         
-        .num { font-size: 24px; font-weight: 700; color: #000; min-width: 50px; }
+        .num { font-size: 26px; font-weight: 700; color: #000; min-width: 60px; }
         .details { flex: 1; }
-        .name { font-size: 22px; font-weight: 700; margin: 0 0 4px 0; }
-        .meta { color: var(--text-sub); font-size: 14px; }
+        .name { font-size: 24px; font-weight: 700; margin: 0 0 6px 0; }
+        .meta { color: var(--text-sub); font-size: 15px; }
         .meta strong { color: #000; }
         
         .panel {
             background: var(--panel);
             border: 1px solid var(--border);
             border-radius: 4px;
-            padding: 24px;
+            padding: 28px;
             display: none;
             height: fit-content;
             box-shadow: 0 1px 4px rgba(0,0,0,0.05);
@@ -87,20 +87,20 @@
         .tech-matrix {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin: 14px 0;
-            font-size: 12px;
+            gap: 12px;
+            margin: 16px 0;
+            font-size: 13px;
         }
         .matrix-cell {
             background: #f9fafb;
-            padding: 8px;
+            padding: 10px;
             border-radius: 4px;
             border: 1px solid var(--border);
         }
-        .matrix-cell span { color: var(--text-sub); display: block; font-size: 10px; font-weight: bold; text-transform: uppercase; }
+        .matrix-cell span { color: var(--text-sub); display: block; font-size: 11px; font-weight: bold; text-transform: uppercase; }
 
-        .thumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 4px; margin-bottom: 16px; border: 1px solid var(--border); background: #000; }
-        .desc { font-size: 14px; line-height: 1.6; color: #1f2937; margin: 0; }
+        .thumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 4px; margin-bottom: 20px; border: 1px solid var(--border); background: #000; }
+        .desc { font-size: 15px; line-height: 1.65; color: #1f2937; margin: 0; }
     </style>
 </head>
 <body>
@@ -161,7 +161,7 @@
     </div>
 
     <div class="panel" id="panel">
-        <h2 id="p-name" style="margin:0 0 4px 0; font-size: 24px; font-weight: 700;"></h2>
+        <h2 id="p-name" style="margin:0 0 6px 0; font-size: 26px; font-weight: 700;"></h2>
         <div id="p-meta" class="meta"></div>
         
         <div class="tech-matrix">
