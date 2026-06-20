@@ -62,15 +62,11 @@
             box-shadow: 0 1px 4px rgba(0,0,0,0.05);
         }
         
-        /* Level Colors restored to original requested colors */
         .card.ae-card:hover { border-color: #4c1d95; background: #f5f3ff; }
         .card.ang-card:hover { border-color: #ffb6c1; background: #fff5f7; }
         .card.ex-card:hover { border-color: #70757a; background: #f3f4f6; }
         .card.koc-card:hover { border-color: #a3a3a3; background: #fafafa; }
-        
-        /* Vehemence card styled with dark orangish red hover state */
         .card.vhm-card:hover { border-color: #ea580c; background: #fff7ed; }
-        
         .card.grf-card:hover { border-color: #991b1b; background: #fef2f2; }
         .card.soc-card:hover { border-color: #a5b4fc; background: #f5f7ff; }
         .card.hel-card:hover { border-color: #2d4a22; background: #f0fdf4; }
@@ -81,6 +77,7 @@
         .name { font-size: 24px; font-weight: 700; margin: 0 0 6px 0; }
         .meta { color: var(--text-sub); font-size: 15px; }
         .meta strong { color: #000; }
+        .score-tag { font-size: 14px; font-weight: 700; background: #f3f4f6; padding: 4px 8px; border-radius: 4px; border: 1px solid var(--border); margin-left: auto; }
         
         .panel {
             background: var(--panel);
@@ -131,6 +128,7 @@
                 <div class="name">Aeternus</div>
                 <div class="meta">Published by <strong>Riot</strong></div>
             </div>
+            <div class="score-tag">—</div>
         </div>
         <div class="card ang-card" onclick="showLevel('angelicide')">
             <div class="num">#2</div>
@@ -138,6 +136,7 @@
                 <div class="name">Angelicide</div>
                 <div class="meta">Published by <strong>LexyCat</strong></div>
             </div>
+            <div class="score-tag">—</div>
         </div>
         <div class="card ex-card" onclick="showLevel('exasperation')">
             <div class="num">#3</div>
@@ -145,6 +144,7 @@
                 <div class="name">Exasperation</div>
                 <div class="meta">Published by <strong>Thycket</strong></div>
             </div>
+            <div class="score-tag">—</div>
         </div>
         <div class="card koc-card" onclick="showLevel('kocmoc_unleashed')">
             <div class="num">#4</div>
@@ -152,6 +152,7 @@
                 <div class="name">KOCMOC UNLEASHED</div>
                 <div class="meta">Published by <strong>CherryTeam</strong></div>
             </div>
+            <div class="score-tag">—</div>
         </div>
         <div class="card vhm-card" onclick="showLevel('vehemence')">
             <div class="num">#5</div>
@@ -159,6 +160,7 @@
                 <div class="name">VEHEMENCE</div>
                 <div class="meta">Published by <strong>zYuko</strong></div>
             </div>
+            <div class="score-tag">—</div>
         </div>
         <div class="card grf-card" onclick="showLevel('grief')">
             <div class="num">#6</div>
@@ -166,6 +168,7 @@
                 <div class="name">GRIEF</div>
                 <div class="meta">Published by <strong>Icedcave</strong></div>
             </div>
+            <div class="score-tag">—</div>
         </div>
         <div class="card soc-card" onclick="showLevel('society')">
             <div class="num">#7</div>
@@ -173,6 +176,7 @@
                 <div class="name">Society</div>
                 <div class="meta">Published by <strong>Neomarbilan</strong></div>
             </div>
+            <div class="score-tag">★ 8.25</div>
         </div>
         <div class="card hel-card" onclick="showLevel('heliopolis')">
             <div class="num">#8</div>
@@ -180,6 +184,7 @@
                 <div class="name">Heliopolis</div>
                 <div class="meta">Published by <strong>MindCap</strong></div>
             </div>
+            <div class="score-tag">★ 7.80</div>
         </div>
         <div class="card sd-card" onclick="showLevel('sweeping_demon_2')">
             <div class="num">#9</div>
@@ -187,6 +192,7 @@
                 <div class="name">Sweeping Demon 2</div>
                 <div class="meta">Published by <strong>Temp</strong></div>
             </div>
+            <div class="score-tag">★ 7.75</div>
         </div>
     </div>
 
@@ -198,7 +204,7 @@
             <div class="matrix-cell"><span>Verification Status</span><strong id="p-status"></strong></div>
             <div class="matrix-cell"><span>Build Type</span><strong id="p-type">Mega-Collaboration</strong></div>
             <div class="matrix-cell"><span>Level Length</span><strong id="p-length"></strong></div>
-            <div class="matrix-cell"><span>Physics Version</span><strong>2.206+ Elite Meta</strong></div>
+            <div class="matrix-cell"><span>Community Score</span><strong id="p-score">—</strong></div>
         </div>
         
         <div class="video-container">
@@ -211,39 +217,39 @@
 <script>
     const data = {
         aeternus: {
-            n: "Aeternus", m: "Published by <strong>Riot</strong>", type: "Mega-Collaboration", status: "Unassigned / Open", length: "1:20", v: "XjypbEY_2Aw",
+            n: "Aeternus", m: "Published by <strong>Riot</strong>", type: "Mega-Collaboration", status: "Unassigned / Open", length: "1:20", v: "XjypbEY_2Aw", score: "—",
             d: "The ultimate unreleased gauntlet designed to test the absolute boundaries of human precision. Serving as the direct spiritual successor to Bloodbath, it features tight, frame-perfect micro-timings and ruthless ship/wave corridors built to dominate the extreme meta."
         },
         angelicide: {
-            n: "Angelicide", m: "Published by <strong>LexyCat</strong>", type: "Mega-Collaboration", status: "In-Progress", length: "1:40", v: "UvLvEh_xN5A",
+            n: "Angelicide", m: "Published by <strong>LexyCat</strong>", type: "Mega-Collaboration", status: "In-Progress", length: "1:40", v: "UvLvEh_xN5A", score: "—",
             d: "A stunningly dense mega-collaboration managed by LexyCat. It introduces complex rhythmic layouts, visually striking aesthetics, and heavy mechanical wave precision built to contest the top spots."
         },
         exasperation: {
-            n: "Exasperation", m: "Published by <strong>Thycket</strong>", type: "Solo Project", status: "In-Progress", length: "5:00", v: "9-OZ_2p9p1I",
+            n: "Exasperation", m: "Published by <strong>Thycket</strong>", type: "Solo Project", status: "In-Progress", length: "5:00", v: "9-OZ_2p9p1I", score: "—",
             d: "An infamous, historic test of structural endurance and near-impossible gameplay coordination. Known for its distinct visual style and sensory overload design, it features an exhaustive series of hyper-tight maneuvers and rhythmic click alignment sections."
         },
         kocmoc_unleashed: {
-            n: "KOCMOC UNLEASHED", m: "Published by <strong>CherryTeam</strong>", type: "Mega-Collaboration", status: "In-Progress", length: "1:50", v: "H6v5U_yT2cU",
+            n: "KOCMOC UNLEASHED", m: "Published by <strong>CherryTeam</strong>", type: "Mega-Collaboration", status: "In-Progress", length: "1:50", v: "H6v5U_yT2cU", score: "—",
             d: "An escalated, heavily unnerfed continuation of the cosmic KOCMOC mythos, compiled by CherryTeam. Utilizing blinding white, monochromatic visual arrays combined with devastating straight-fly segments and lethal wave spaces."
         },
         vehemence: {
-            n: "VEHEMENCE", m: "Published by <strong>zYuko</strong>", type: "Mega-Collaboration", status: "In-Progress", length: "2:10", v: "2Ful0_OL_hY",
+            n: "VEHEMENCE", m: "Published by <strong>zYuko</strong>", type: "Mega-Collaboration", status: "In-Progress", length: "2:10", v: "2Ful0_OL_hY", score: "—",
             d: "A highly challenging and technical project published by zYuko. Built with intense routing schemes and precise navigation windows, it sets up demanding multi-vehicle mechanical gates tailored to press top players to their absolute limits."
         },
         grief: {
-            n: "GRIEF", m: "Published by <strong>Icedcave</strong>", type: "Mega-Collaboration", status: "In-Progress", length: "3:00", v: "jYXxoDywnAE",
+            n: "GRIEF", m: "Published by <strong>Icedcave</strong>", type: "Mega-Collaboration", status: "In-Progress", length: "3:00", v: "jYXxoDywnAE", score: "—",
             d: "A brutal, highly anticipated conceptual remake and successor to Slaughterhouse, overseen by Icedcave. Marked by a grim, pitch-black design philosophy, it challenges top players with merciless precision fly elements and brutal wave choke points."
         },
         society: {
-            n: "Society", m: "Published by <strong>Neomarbilan</strong>", type: "Mega-Collaboration", status: "In-Progress", length: "1:35", v: "6s-NBTRzspE",
+            n: "Society", m: "Published by <strong>Neomarbilan</strong>", type: "Mega-Collaboration", status: "In-Progress", length: "1:35", v: "6s-NBTRzspE", score: "8.25 (7 + 8 + 8 + 10) ÷ 4",
             d: "A highly intricate, sleek mega-project published by Neomarbilan. It features an array of clean layouts contrasted against sharp styling markers, demanding pinpoint mechanical input fluidity through complex transitions."
         },
         heliopolis: {
-            n: "Heliopolis", m: "Published by <strong>MindCap</strong>", type: "Mega-Collaboration", status: "In-Progress", length: "2:20", v: "7yaKGl_2Dsw",
+            n: "Heliopolis", m: "Published by <strong>MindCap</strong>", type: "Mega-Collaboration", status: "In-Progress", length: "2:20", v: "7yaKGl_2Dsw", score: "7.80 (9 + 7 + 9 + 7 + 7) ÷ 5",
             d: "A massive impending mega-collaboration hosted by MindCap. It features an atmospheric layout paired with claustrophobic corridor navigation and demanding technical timing structures built to challenge the absolute limit of modern players."
         },
         sweeping_demon_2: {
-            n: "Sweeping Demon 2", m: "Published by <strong>Temp</strong>", type: "Mega-Collaboration", status: "In-Progress", length: "1:10", v: "5Nh3CykTGtU",
+            n: "Sweeping Demon 2", m: "Published by <strong>Temp</strong>", type: "Mega-Collaboration", status: "In-Progress", length: "1:10", v: "5Nh3CykTGtU", score: "7.75 (7 + 8.5 + 6 + 9.5) ÷ 4",
             d: "An aggressive, fast-paced challenge framework published by Temp. Drenched in vivid crimson and red visual indicators, its frantic layout enforces aggressive timing windows and strict click patterns across rapid mode transitions."
         }
     };
@@ -256,6 +262,7 @@
         document.getElementById('p-type').innerText = l.type;
         document.getElementById('p-status').innerText = l.status;
         document.getElementById('p-length').innerText = l.length;
+        document.getElementById('p-score').innerText = l.score;
         document.getElementById('p-desc').innerText = l.d;
         document.getElementById('p-video').src = `https://www.youtube.com/embed/${l.v}`;
         document.getElementById('panel').style.display = 'block';
